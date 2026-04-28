@@ -230,7 +230,7 @@ h1 {
 .drop-zone.correct {
   border-style: solid;
   border-color: var(--ok);
-  background: rgba(42, 157, 143, 0.14);
+  background: rgba(42, 157, 143, 0.36);
   color: var(--ink);
   font-weight: 700;
 }
