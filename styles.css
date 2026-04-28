@@ -1,0 +1,353 @@
+:root {
+  --bg-1: #f7f0d8;
+  --bg-2: #dff3e8;
+  --panel: rgba(255, 255, 255, 0.78);
+  --ink: #14213d;
+  --ink-soft: #3f4e6b;
+  --accent: #c44536;
+  --accent-2: #1d7874;
+  --ok: #2a9d8f;
+  --bad: #d62828;
+  --shadow: 0 18px 40px rgba(20, 33, 61, 0.16);
+  --radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.7), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.6), transparent 35%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+}
+
+.app-shell {
+  width: min(1100px, 94vw);
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  color: var(--accent-2);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0.3rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.subtitle {
+  margin: 0.5rem auto 0;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.chip {
+  background: var(--panel);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(20, 33, 61, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.reset-button {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.58rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.reset-button:focus-visible,
+.label:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+.simulation {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.petri-dish {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid rgba(20, 33, 61, 0.14);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.microbe-card {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 16px;
+  padding: 0.8rem;
+  border: 1px solid rgba(20, 33, 61, 0.1);
+  position: relative;
+}
+
+.microbe-card h2 {
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+}
+
+.microbe-card p {
+  margin: 0.22rem 0 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.drop-zone {
+  border: 2px dashed rgba(29, 120, 116, 0.45);
+  border-radius: 12px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  text-align: center;
+  color: var(--ink-soft);
+  background: rgba(223, 243, 232, 0.35);
+}
+
+.drop-zone.correct {
+  border-style: solid;
+  border-color: var(--ok);
+  background: rgba(42, 157, 143, 0.14);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.drop-zone.wrong {
+  border-color: var(--bad);
+  background: rgba(214, 40, 40, 0.08);
+}
+
+.label-tray {
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid rgba(20, 33, 61, 0.14);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  position: sticky;
+  top: 12px;
+}
+
+.tray-note {
+  margin: 0.5rem 0 0.85rem;
+  color: var(--ink-soft);
+}
+
+.labels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  max-height: 72vh;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+
+.label {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.65rem 0.55rem;
+  background: #14213d;
+  color: white;
+  font-weight: 700;
+  font-size: 0.84rem;
+  text-align: left;
+  touch-action: none;
+  user-select: none;
+  position: relative;
+  cursor: grab;
+}
+
+.label.locked {
+  background: var(--ok);
+  cursor: default;
+}
+
+.label.dragging {
+  cursor: grabbing;
+  z-index: 10;
+}
+
+.status-message {
+  min-height: 1.3rem;
+  margin: 0.8rem 0 0;
+  font-weight: 600;
+}
+
+.diagram-container {
+  position: relative;
+  margin-bottom: 0.75rem;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(29, 120, 116, 0.08), rgba(29, 120, 116, 0.2));
+  border: 1px solid rgba(20, 33, 61, 0.14);
+  overflow: hidden;
+}
+
+.diagram-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 13 / 7;
+}
+
+.diagram-zone {
+  position: absolute;
+  min-height: auto;
+  padding: 0.24rem 0.3rem;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  width: clamp(68px, 20vw, 92px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.bac-zone-1 { top: 6%; left: 34%; }
+.bac-zone-2 { top: 58%; left: 11%; }
+.bac-zone-3 { top: 54%; left: 39%; }
+.bac-zone-4 { top: 20%; left: 62%; }
+
+.vir-zone-1 { top: 6%; left: 34%; }
+.vir-zone-2 { top: 36%; left: 63%; }
+.vir-zone-3 { top: 48%; left: 37%; }
+.vir-zone-4 { top: 72%; left: 28%; }
+
+.fun-zone-1 { top: 16%; left: 8%; }
+.fun-zone-2 { top: 8%; left: 40%; }
+.fun-zone-3 { top: 58%; left: 32%; }
+.fun-zone-4 { top: 58%; left: 60%; }
+
+/* Keep fungus targets off the center body so hypha structure remains visible. */
+.fun-zone-1 { top: 4%; left: 4%; }
+.fun-zone-2 { top: 4%; left: 56%; }
+.fun-zone-3 { top: 70%; left: 14%; }
+.fun-zone-4 { top: 70%; left: 62%; }
+
+article[aria-label="Fungus structure diagram"] .diagram-container {
+  background: linear-gradient(145deg, rgba(180, 132, 220, 0.2), rgba(146, 92, 190, 0.22));
+}
+
+.microbe-art {
+  min-height: 78px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(29, 120, 116, 0.12), rgba(29, 120, 116, 0.28));
+}
+
+.bacterium span {
+  position: absolute;
+  width: 34px;
+  height: 16px;
+  background: #60b56f;
+  border-radius: 14px;
+}
+
+.bacterium span:nth-child(1) { top: 14px; left: 16px; transform: rotate(-16deg); }
+.bacterium span:nth-child(2) { top: 40px; left: 58px; transform: rotate(12deg); }
+.bacterium span:nth-child(3) { top: 20px; left: 95px; transform: rotate(24deg); }
+
+.virus .core {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #ef476f;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 -34px 0 -14px #ef476f,
+    0 34px 0 -14px #ef476f,
+    -34px 0 0 -14px #ef476f,
+    34px 0 0 -14px #ef476f,
+    -24px -24px 0 -14px #ef476f,
+    24px -24px 0 -14px #ef476f,
+    -24px 24px 0 -14px #ef476f,
+    24px 24px 0 -14px #ef476f;
+}
+
+.fungus span {
+  position: absolute;
+  background: #9d4edd;
+  border-radius: 20px;
+}
+
+.fungus span:nth-child(1) { width: 60px; height: 20px; top: 20px; left: 20px; }
+.fungus span:nth-child(2) { width: 18px; height: 36px; top: 36px; left: 42px; }
+.fungus span:nth-child(3) { width: 50px; height: 18px; top: 22px; left: 78px; }
+.fungus span:nth-child(4) { width: 16px; height: 34px; top: 38px; left: 96px; }
+
+.protozoa span {
+  position: absolute;
+  border-radius: 50%;
+  background: #ff9f1c;
+}
+
+.protozoa span:nth-child(1) { width: 64px; height: 36px; top: 26px; left: 28px; transform: rotate(-18deg); }
+.protozoa span:nth-child(2) { width: 54px; height: 30px; top: 20px; left: 86px; transform: rotate(14deg); }
+
+@media (max-width: 900px) {
+  .simulation {
+    grid-template-columns: 1fr;
+  }
+
+  .label-tray {
+    position: static;
+  }
+
+  .labels {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  .drop-zone {
+    min-height: 52px;
+  }
+
+  .diagram-zone {
+    width: 82px;
+    font-size: 0.62rem;
+  }
+}

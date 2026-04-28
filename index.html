@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microbe Label Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">Interactive Biology Simulation</p>
+        <h1>Microbe Label Lab</h1>
+        <p class="subtitle">
+          Drag each A-level structure label onto the correct feature in each microbe diagram.
+        </p>
+      </header>
+
+      <section class="hud" aria-live="polite">
+        <div class="chip">Score: <span id="score">0</span>/<span id="total">0</span></div>
+        <div class="chip">Attempts: <span id="attempts">0</span></div>
+        <button id="resetButton" class="reset-button" type="button">Reset Activity</button>
+      </section>
+
+      <section class="simulation" aria-label="Microbe labeling simulation">
+        <div class="petri-dish" id="petriDish">
+          <article class="microbe-card" aria-label="Bacterium structure diagram">
+            <h2>Bacterium (prokaryote)</h2>
+            <p>Identify structures on a typical rod-shaped bacterial cell.</p>
+            <div class="diagram-container">
+              <svg class="diagram-canvas" viewBox="0 0 260 180" role="img" aria-label="Bacterium diagram">
+                <ellipse cx="130" cy="90" rx="110" ry="58" fill="#7dcf89" stroke="#2f7a4a" stroke-width="4"></ellipse>
+                <ellipse cx="130" cy="90" rx="95" ry="47" fill="#9ce0a6" stroke="#3c8d59" stroke-width="2"></ellipse>
+                <circle cx="95" cy="82" r="4" fill="#356d43"></circle>
+                <circle cx="112" cy="98" r="4" fill="#356d43"></circle>
+                <circle cx="145" cy="88" r="4" fill="#356d43"></circle>
+                <circle cx="164" cy="102" r="4" fill="#356d43"></circle>
+                <path d="M110 70 C130 48, 158 55, 176 78" fill="none" stroke="#1f4a2d" stroke-width="3"></path>
+              </svg>
+              <div class="drop-zone diagram-zone bac-zone-1" data-slot="bac-cell-wall" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone bac-zone-2" data-slot="bac-membrane" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone bac-zone-3" data-slot="bac-ribosome" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone bac-zone-4" data-slot="bac-plasmid" data-placeholder="Drop here">Drop here</div>
+            </div>
+          </article>
+
+          <article class="microbe-card" aria-label="Virus structure diagram">
+            <h2>Virus (enveloped)</h2>
+            <p>Label key viral features used in host-cell infection.</p>
+            <div class="diagram-container">
+              <svg class="diagram-canvas" viewBox="0 0 260 180" role="img" aria-label="Virus diagram">
+                <circle cx="130" cy="90" r="56" fill="#ffd5de" stroke="#cf4f76" stroke-width="4"></circle>
+                <circle cx="130" cy="90" r="36" fill="#f78da7" stroke="#b93c62" stroke-width="3"></circle>
+                <path d="M112 84 Q130 68 148 84 Q130 106 112 84" fill="#7a1f3d"></path>
+                <line x1="130" y1="28" x2="130" y2="12" stroke="#cf4f76" stroke-width="3"></line>
+                <line x1="187" y1="90" x2="203" y2="90" stroke="#cf4f76" stroke-width="3"></line>
+                <line x1="73" y1="90" x2="57" y2="90" stroke="#cf4f76" stroke-width="3"></line>
+                <line x1="130" y1="152" x2="130" y2="168" stroke="#cf4f76" stroke-width="3"></line>
+              </svg>
+              <div class="drop-zone diagram-zone vir-zone-1" data-slot="vir-envelope" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone vir-zone-2" data-slot="vir-capsid" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone vir-zone-3" data-slot="vir-genome" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone vir-zone-4" data-slot="vir-spike" data-placeholder="Drop here">Drop here</div>
+            </div>
+          </article>
+
+          <article class="microbe-card" aria-label="Fungus structure diagram">
+            <h2>Fungus (hypha)</h2>
+            <p>Match fungal eukaryotic structures and growth features.</p>
+            <div class="diagram-container">
+              <svg class="diagram-canvas" viewBox="0 0 260 180" role="img" aria-label="Fungus diagram">
+                <rect x="34" y="70" width="192" height="48" rx="22" fill="#d9b8f7" stroke="#6f23b7" stroke-width="5"></rect>
+                <line x1="100" y1="70" x2="100" y2="118" stroke="#6f23b7" stroke-width="4"></line>
+                <line x1="160" y1="70" x2="160" y2="118" stroke="#6f23b7" stroke-width="4"></line>
+                <path d="M88 70 C80 48, 68 42, 56 34" fill="none" stroke="#6f23b7" stroke-width="4" stroke-linecap="round"></path>
+                <path d="M164 70 C172 50, 184 43, 198 36" fill="none" stroke="#6f23b7" stroke-width="4" stroke-linecap="round"></path>
+                <circle cx="124" cy="92" r="12" fill="#9d4edd"></circle>
+                <circle cx="182" cy="95" r="11" fill="#b089d8"></circle>
+              </svg>
+              <div class="drop-zone diagram-zone fun-zone-1" data-slot="fun-chitin-wall" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone fun-zone-2" data-slot="fun-hypha" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone fun-zone-3" data-slot="fun-nucleus" data-placeholder="Drop here">Drop here</div>
+              <div class="drop-zone diagram-zone fun-zone-4" data-slot="fun-vacuole" data-placeholder="Drop here">Drop here</div>
+            </div>
+          </article>
+
+        </div>
+
+        <aside class="label-tray" aria-label="Draggable microbe labels">
+          <h3>Labels</h3>
+          <p class="tray-note">Drag all 12 labels to the correct structure targets.</p>
+          <div class="labels" id="labelsContainer">
+            <button class="label" data-label="bac-cell-wall" type="button">Bacterium cell wall</button>
+            <button class="label" data-label="bac-membrane" type="button">Bacterial membrane</button>
+            <button class="label" data-label="bac-ribosome" type="button">70S ribosomes</button>
+            <button class="label" data-label="bac-plasmid" type="button">Plasmid</button>
+
+            <button class="label" data-label="vir-envelope" type="button">Viral envelope</button>
+            <button class="label" data-label="vir-capsid" type="button">Capsid</button>
+            <button class="label" data-label="vir-genome" type="button">Viral genome</button>
+            <button class="label" data-label="vir-spike" type="button">Attachment spikes</button>
+
+            <button class="label" data-label="fun-chitin-wall" type="button">Chitin wall</button>
+            <button class="label" data-label="fun-hypha" type="button">Hypha</button>
+            <button class="label" data-label="fun-nucleus" type="button">Fungal nucleus</button>
+            <button class="label" data-label="fun-vacuole" type="button">Fungal vacuole</button>
+          </div>
+          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
