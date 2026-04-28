@@ -139,6 +139,188 @@
           <p id="statusMessage" class="status-message" aria-live="polite"></p>
         </aside>
       </section>
+
+      <section class="function-match" aria-label="Bacterial component to function matching activity">
+        <header class="function-match-header">
+          <p class="eyebrow">A-level Extension Task</p>
+          <h2>Bacterial Components and Functions</h2>
+          <p>Choose the correct function for each bacterial component, then check your score.</p>
+        </header>
+
+        <div class="function-match-hud" aria-live="polite">
+          <div class="chip">Correct: <span id="functionMatchScore">0</span>/9</div>
+          <button id="checkFunctionMatch" class="reset-button" type="button">Check Answers</button>
+          <button id="resetFunctionMatch" class="reset-button secondary" type="button">Reset Matching</button>
+        </div>
+
+        <div class="function-match-table-wrap">
+          <table class="function-match-table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Function (choose one)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Capsule</th>
+                <td>
+                  <select class="function-select" data-answer="prevents-desiccation-phagocytosis">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Peptidoglycan wall</th>
+                <td>
+                  <select class="function-select" data-answer="shape-osmotic-pressure">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Cell membrane</th>
+                <td>
+                  <select class="function-select" data-answer="regulates-entry-exit">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Cytoplasm</th>
+                <td>
+                  <select class="function-select" data-answer="gel-matrix">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">70S ribosomes</th>
+                <td>
+                  <select class="function-select" data-answer="protein-synthesis">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">DNA loop (nucleoid)</th>
+                <td>
+                  <select class="function-select" data-answer="single-circular-chromosome">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Plasmids</th>
+                <td>
+                  <select class="function-select" data-answer="small-circular-extra-genes">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Mesosomes</th>
+                <td>
+                  <select class="function-select" data-answer="respiration-dna-replication">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Flagella</th>
+                <td>
+                  <select class="function-select" data-answer="rotary-motility">
+                    <option value="">Select function</option>
+                    <option value="prevents-desiccation-phagocytosis">Prevents desiccation and phagocytosis</option>
+                    <option value="shape-osmotic-pressure">Provides shape and protects against osmotic pressure</option>
+                    <option value="regulates-entry-exit">Regulates entry and exit of substances</option>
+                    <option value="gel-matrix">Gel-like matrix containing enzymes, nutrients, ribosomes and DNA</option>
+                    <option value="protein-synthesis">Site of protein synthesis (30S and 50S subunits)</option>
+                    <option value="single-circular-chromosome">Single circular chromosome in nucleoid region</option>
+                    <option value="small-circular-extra-genes">Small circular DNA molecules containing extra genes</option>
+                    <option value="respiration-dna-replication">Membrane infoldings with role in respiration and DNA replication</option>
+                    <option value="rotary-motility">Rotary structures for motility</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="functionMatchStatus" class="status-message" aria-live="polite"></p>
+      </section>
     </main>
 
     <script src="app.js"></script>

@@ -236,3 +236,63 @@ function onKeyboardZoneAction(event) {
     selectedByKeyboard = null;
   }
 }
+
+const functionSelects = Array.from(document.querySelectorAll(".function-select"));
+const functionMatchScoreEl = document.getElementById("functionMatchScore");
+const functionMatchStatusEl = document.getElementById("functionMatchStatus");
+const checkFunctionMatchButton = document.getElementById("checkFunctionMatch");
+const resetFunctionMatchButton = document.getElementById("resetFunctionMatch");
+
+if (checkFunctionMatchButton && resetFunctionMatchButton && functionMatchScoreEl && functionMatchStatusEl) {
+  checkFunctionMatchButton.addEventListener("click", checkFunctionMatches);
+  resetFunctionMatchButton.addEventListener("click", resetFunctionMatches);
+  functionSelects.forEach((select) => {
+    select.addEventListener("change", () => {
+      select.classList.remove("correct", "wrong");
+    });
+  });
+}
+
+function checkFunctionMatches() {
+  let correctCount = 0;
+
+  functionSelects.forEach((select) => {
+    const expected = select.dataset.answer;
+    const chosen = select.value;
+
+    select.classList.remove("correct", "wrong");
+
+    if (!chosen) {
+      return;
+    }
+
+    if (chosen === expected) {
+      select.classList.add("correct");
+      correctCount += 1;
+    } else {
+      select.classList.add("wrong");
+    }
+  });
+
+  functionMatchScoreEl.textContent = String(correctCount);
+
+  if (correctCount === functionSelects.length) {
+    functionMatchStatusEl.textContent = "Excellent: all component-function pairs are correct.";
+    functionMatchStatusEl.style.color = "#165f53";
+    return;
+  }
+
+  functionMatchStatusEl.textContent = `You have ${correctCount}/${functionSelects.length} correct. Review highlighted rows and try again.`;
+  functionMatchStatusEl.style.color = "#7a271a";
+}
+
+function resetFunctionMatches() {
+  functionSelects.forEach((select) => {
+    select.value = "";
+    select.classList.remove("correct", "wrong");
+  });
+
+  functionMatchScoreEl.textContent = "0";
+  functionMatchStatusEl.textContent = "Matching reset. Choose functions for each component.";
+  functionMatchStatusEl.style.color = "#165f53";
+}

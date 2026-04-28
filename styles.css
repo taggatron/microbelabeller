@@ -105,6 +105,85 @@ h1 {
   align-items: start;
 }
 
+.function-match {
+  margin-top: 1rem;
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid rgba(20, 33, 61, 0.14);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.function-match-header p {
+  margin: 0.3rem 0 0.65rem;
+  color: var(--ink-soft);
+}
+
+.function-match-hud {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.reset-button.secondary {
+  background: #3f4e6b;
+}
+
+.function-match-table-wrap {
+  overflow-x: auto;
+}
+
+.function-match-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.function-match-table th,
+.function-match-table td {
+  text-align: left;
+  padding: 0.68rem 0.74rem;
+  border-bottom: 1px solid rgba(20, 33, 61, 0.1);
+}
+
+.function-match-table thead th {
+  background: #1669ad;
+  color: #fff;
+}
+
+.function-match-table tbody tr:nth-child(odd) {
+  background: rgba(194, 212, 206, 0.6);
+}
+
+.function-match-table tbody tr:nth-child(even) {
+  background: rgba(225, 233, 241, 0.9);
+}
+
+.function-select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 33, 61, 0.25);
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+
+.function-select.correct {
+  border-color: var(--ok);
+  box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+}
+
+.function-select.wrong {
+  border-color: var(--bad);
+  box-shadow: 0 0 0 2px rgba(214, 40, 40, 0.16);
+}
+
 .petri-dish {
   background: var(--panel);
   border-radius: var(--radius);
