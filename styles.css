@@ -252,6 +252,11 @@ h1 {
 .vir-zone-3 { top: 48%; left: 37%; }
 .vir-zone-4 { top: 72%; left: 28%; }
 
+.phg-zone-1 { top: 2%; left: 34%; }
+.phg-zone-2 { top: 20%; left: 58%; }
+.phg-zone-3 { top: 53%; left: 58%; }
+.phg-zone-4 { top: 78%; left: 10%; }
+
 .fun-zone-1 { top: 16%; left: 8%; }
 .fun-zone-2 { top: 8%; left: 40%; }
 .fun-zone-3 { top: 58%; left: 32%; }
@@ -265,6 +270,10 @@ h1 {
 
 article[aria-label="Fungus structure diagram"] .diagram-container {
   background: linear-gradient(145deg, rgba(180, 132, 220, 0.2), rgba(146, 92, 190, 0.22));
+}
+
+article[aria-label="Bacteriophage structure diagram"] .diagram-container {
+  background: linear-gradient(145deg, rgba(181, 221, 255, 0.34), rgba(126, 177, 236, 0.34));
 }
 
 .microbe-art {
