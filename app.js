@@ -10,6 +10,7 @@ let score = 0;
 let attempts = 0;
 let activeDrag = null;
 let selectedByKeyboard = null;
+const DROP_ZONE_HIT_SLOP = 22;
 
 const total = zones.length;
 if (totalEl) {
@@ -114,10 +115,23 @@ function zoneFromPoint(x, y, ignoreElement) {
     ignoreElement.style.visibility = originalVisibility;
   }
 
-  if (!element) {
-    return null;
+  if (element) {
+    const directZone = element.closest(".drop-zone");
+    if (directZone) {
+      return directZone;
+    }
   }
-  return element.closest(".drop-zone");
+
+  // Fallback: allow drops slightly outside the visual zone for easier mobile use.
+  return zones.find((zone) => {
+    const rect = zone.getBoundingClientRect();
+    return (
+      x >= rect.left - DROP_ZONE_HIT_SLOP &&
+      x <= rect.right + DROP_ZONE_HIT_SLOP &&
+      y >= rect.top - DROP_ZONE_HIT_SLOP &&
+      y <= rect.bottom + DROP_ZONE_HIT_SLOP
+    );
+  }) || null;
 }
 
 function highlightCurrentZone(x, y) {

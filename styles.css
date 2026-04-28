@@ -337,6 +337,12 @@ h1 {
   aspect-ratio: 13 / 7;
 }
 
+.annotation-line {
+  stroke: rgba(20, 33, 61, 0.62);
+  stroke-width: 1.8;
+  stroke-dasharray: 4 3;
+}
+
 .diagram-zone {
   position: absolute;
   min-height: auto;
@@ -345,33 +351,28 @@ h1 {
   line-height: 1.2;
   width: clamp(68px, 20vw, 92px);
   background: rgba(255, 255, 255, 0.9);
+  transform: translate(-50%, -50%);
 }
 
-.bac-zone-1 { top: 6%; left: 34%; }
-.bac-zone-2 { top: 58%; left: 11%; }
-.bac-zone-3 { top: 54%; left: 39%; }
-.bac-zone-4 { top: 20%; left: 62%; }
+.bac-zone-1 { top: 7.8%; left: 42.3%; }
+.bac-zone-2 { top: 71.1%; left: 14.6%; }
+.bac-zone-3 { top: 67.8%; left: 48.5%; }
+.bac-zone-4 { top: 25.6%; left: 81.5%; }
 
-.vir-zone-1 { top: 6%; left: 34%; }
-.vir-zone-2 { top: 36%; left: 63%; }
-.vir-zone-3 { top: 48%; left: 37%; }
-.vir-zone-4 { top: 72%; left: 28%; }
+.vir-zone-1 { top: 6.7%; left: 40.8%; }
+.vir-zone-2 { top: 25.6%; left: 80%; }
+.vir-zone-3 { top: 66.7%; left: 65.4%; }
+.vir-zone-4 { top: 82.2%; left: 40.8%; }
 
-.phg-zone-1 { top: 2%; left: 34%; }
-.phg-zone-2 { top: 20%; left: 58%; }
-.phg-zone-3 { top: 53%; left: 58%; }
-.phg-zone-4 { top: 78%; left: 10%; }
+.phg-zone-1 { top: 8.9%; left: 19.2%; }
+.phg-zone-2 { top: 13.3%; left: 80.8%; }
+.phg-zone-3 { top: 60%; left: 80.8%; }
+.phg-zone-4 { top: 83.3%; left: 16.9%; }
 
-.fun-zone-1 { top: 16%; left: 8%; }
-.fun-zone-2 { top: 8%; left: 40%; }
-.fun-zone-3 { top: 58%; left: 32%; }
-.fun-zone-4 { top: 58%; left: 60%; }
-
-/* Keep fungus targets off the center body so hypha structure remains visible. */
-.fun-zone-1 { top: 4%; left: 4%; }
-.fun-zone-2 { top: 4%; left: 56%; }
-.fun-zone-3 { top: 70%; left: 14%; }
-.fun-zone-4 { top: 70%; left: 62%; }
+.fun-zone-1 { top: 8.9%; left: 16.2%; }
+.fun-zone-2 { top: 8.9%; left: 83.1%; }
+.fun-zone-3 { top: 88.9%; left: 27.7%; }
+.fun-zone-4 { top: 88.9%; left: 83.1%; }
 
 article[aria-label="Fungus structure diagram"] .diagram-container {
   background: linear-gradient(145deg, rgba(180, 132, 220, 0.2), rgba(146, 92, 190, 0.22));
