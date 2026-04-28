@@ -12,7 +12,9 @@ let activeDrag = null;
 let selectedByKeyboard = null;
 
 const total = zones.length;
-totalEl.textContent = String(total);
+if (totalEl) {
+  totalEl.textContent = String(total);
+}
 
 labels.forEach((label) => {
   label.dataset.originParent = "labelsContainer";
@@ -27,7 +29,9 @@ zones.forEach((zone) => {
   zone.tabIndex = 0;
 });
 
-resetButton.addEventListener("click", resetGame);
+if (resetButton) {
+  resetButton.addEventListener("click", resetGame);
+}
 
 function onPointerDown(event) {
   const target = event.currentTarget;
@@ -140,7 +144,9 @@ function attemptDrop(label, zone) {
   }
 
   attempts += 1;
-  attemptsEl.textContent = String(attempts);
+  if (attemptsEl) {
+    attemptsEl.textContent = String(attempts);
+  }
 
   const picked = label.dataset.label;
   const expected = zone.dataset.slot;
@@ -155,7 +161,9 @@ function attemptDrop(label, zone) {
     label.disabled = true;
 
     score += 1;
-    scoreEl.textContent = String(score);
+    if (scoreEl) {
+      scoreEl.textContent = String(score);
+    }
 
     setStatus(`Correct: ${label.textContent} matched!`, "success");
 
@@ -179,6 +187,9 @@ function restoreLabelToTray(label) {
 }
 
 function setStatus(message, tone) {
+  if (!statusMessage) {
+    return;
+  }
   statusMessage.textContent = message;
   statusMessage.style.color = tone === "error" ? "#b00020" : "#165f53";
 }
@@ -187,8 +198,12 @@ function resetGame() {
   score = 0;
   attempts = 0;
   selectedByKeyboard = null;
-  scoreEl.textContent = "0";
-  attemptsEl.textContent = "0";
+  if (scoreEl) {
+    scoreEl.textContent = "0";
+  }
+  if (attemptsEl) {
+    attemptsEl.textContent = "0";
+  }
 
   const tray = document.getElementById("labelsContainer");
 
@@ -237,62 +252,91 @@ function onKeyboardZoneAction(event) {
   }
 }
 
-const functionSelects = Array.from(document.querySelectorAll(".function-select"));
-const functionMatchScoreEl = document.getElementById("functionMatchScore");
-const functionMatchStatusEl = document.getElementById("functionMatchStatus");
-const checkFunctionMatchButton = document.getElementById("checkFunctionMatch");
-const resetFunctionMatchButton = document.getElementById("resetFunctionMatch");
+const functionMatchSections = Array.from(document.querySelectorAll(".function-match[data-match]"));
 
-if (checkFunctionMatchButton && resetFunctionMatchButton && functionMatchScoreEl && functionMatchStatusEl) {
-  checkFunctionMatchButton.addEventListener("click", checkFunctionMatches);
-  resetFunctionMatchButton.addEventListener("click", resetFunctionMatches);
-  functionSelects.forEach((select) => {
+functionMatchSections.forEach((section) => {
+  const selects = Array.from(section.querySelectorAll(".function-select"));
+  const scoreEl = section.querySelector(".function-match-score");
+  const totalEl = section.querySelector(".function-match-total");
+  const statusEl = section.querySelector(".function-match-status");
+  const checkButton = section.querySelector(".check-function-match");
+  const resetButton = section.querySelector(".reset-function-match");
+
+  if (!scoreEl || !totalEl || !statusEl || !checkButton || !resetButton) {
+    return;
+  }
+
+  totalEl.textContent = String(selects.length);
+  scoreEl.textContent = "0";
+
+  selects.forEach(shuffleSelectOptions);
+
+  checkButton.addEventListener("click", () => {
+    let correctCount = 0;
+
+    selects.forEach((select) => {
+      const expected = select.dataset.answer;
+      const chosen = select.value;
+
+      select.classList.remove("correct", "wrong");
+
+      if (!chosen) {
+        return;
+      }
+
+      if (chosen === expected) {
+        select.classList.add("correct");
+        correctCount += 1;
+      } else {
+        select.classList.add("wrong");
+      }
+    });
+
+    scoreEl.textContent = String(correctCount);
+
+    if (correctCount === selects.length) {
+      statusEl.textContent = "Excellent: all component-function pairs are correct.";
+      statusEl.style.color = "#165f53";
+      return;
+    }
+
+    statusEl.textContent = `You have ${correctCount}/${selects.length} correct. Review highlighted rows and try again.`;
+    statusEl.style.color = "#7a271a";
+  });
+
+  resetButton.addEventListener("click", () => {
+    selects.forEach((select) => {
+      select.value = "";
+      select.classList.remove("correct", "wrong");
+      shuffleSelectOptions(select);
+    });
+
+    scoreEl.textContent = "0";
+    statusEl.textContent = "Matching reset. Choose functions for each component.";
+    statusEl.style.color = "#165f53";
+  });
+
+  selects.forEach((select) => {
     select.addEventListener("change", () => {
       select.classList.remove("correct", "wrong");
     });
   });
-}
+});
 
-function checkFunctionMatches() {
-  let correctCount = 0;
-
-  functionSelects.forEach((select) => {
-    const expected = select.dataset.answer;
-    const chosen = select.value;
-
-    select.classList.remove("correct", "wrong");
-
-    if (!chosen) {
-      return;
-    }
-
-    if (chosen === expected) {
-      select.classList.add("correct");
-      correctCount += 1;
-    } else {
-      select.classList.add("wrong");
-    }
-  });
-
-  functionMatchScoreEl.textContent = String(correctCount);
-
-  if (correctCount === functionSelects.length) {
-    functionMatchStatusEl.textContent = "Excellent: all component-function pairs are correct.";
-    functionMatchStatusEl.style.color = "#165f53";
+function shuffleSelectOptions(select) {
+  const options = Array.from(select.options);
+  if (options.length <= 2) {
     return;
   }
 
-  functionMatchStatusEl.textContent = `You have ${correctCount}/${functionSelects.length} correct. Review highlighted rows and try again.`;
-  functionMatchStatusEl.style.color = "#7a271a";
-}
+  const placeholder = options[0];
+  const answerOptions = options.slice(1);
 
-function resetFunctionMatches() {
-  functionSelects.forEach((select) => {
-    select.value = "";
-    select.classList.remove("correct", "wrong");
-  });
+  for (let i = answerOptions.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [answerOptions[i], answerOptions[j]] = [answerOptions[j], answerOptions[i]];
+  }
 
-  functionMatchScoreEl.textContent = "0";
-  functionMatchStatusEl.textContent = "Matching reset. Choose functions for each component.";
-  functionMatchStatusEl.style.color = "#165f53";
+  select.replaceChildren(placeholder, ...answerOptions);
+  select.value = "";
 }

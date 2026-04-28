@@ -92,7 +92,7 @@
 
           <article class="microbe-card" aria-label="Fungus structure diagram">
             <h2>Fungus (hypha)</h2>
-            <p>Match fungal eukaryotic structures and growth features.</p>
+            <p>Match fungal eukaryotic structures and growth features, including extracellular enzyme release by hyphae.</p>
             <div class="diagram-container">
               <svg class="diagram-canvas" viewBox="0 0 260 180" role="img" aria-label="Fungus diagram">
                 <rect x="34" y="70" width="192" height="48" rx="22" fill="#d9b8f7" stroke="#6f23b7" stroke-width="5"></rect>
@@ -140,7 +140,7 @@
         </aside>
       </section>
 
-      <section class="function-match" aria-label="Bacterial component to function matching activity">
+      <section class="function-match" aria-label="Bacterial component to function matching activity" data-match="bacterial">
         <header class="function-match-header">
           <p class="eyebrow">Structure to Function Matching Extension Task</p>
           <h2>Bacterial Components and Functions</h2>
@@ -148,9 +148,9 @@
         </header>
 
         <div class="function-match-hud" aria-live="polite">
-          <div class="chip">Correct: <span id="functionMatchScore">0</span>/9</div>
-          <button id="checkFunctionMatch" class="reset-button" type="button">Check Answers</button>
-          <button id="resetFunctionMatch" class="reset-button secondary" type="button">Reset Matching</button>
+          <div class="chip">Correct: <span class="function-match-score">0</span>/<span class="function-match-total">9</span></div>
+          <button class="reset-button check-function-match" type="button">Check Answers</button>
+          <button class="reset-button secondary reset-function-match" type="button">Reset Matching</button>
         </div>
 
         <div class="function-match-table-wrap">
@@ -319,7 +319,238 @@
           </table>
         </div>
 
-        <p id="functionMatchStatus" class="status-message" aria-live="polite"></p>
+        <p class="status-message function-match-status" aria-live="polite"></p>
+      </section>
+
+      <section class="function-match" aria-label="Virus component to function matching activity" data-match="virus">
+        <header class="function-match-header">
+          <p class="eyebrow">Structure to Function Matching Extension Task</p>
+          <h2>Virus Components and Functions</h2>
+          <p>Match each viral structure to its most accurate biological function.</p>
+        </header>
+
+        <div class="function-match-hud" aria-live="polite">
+          <div class="chip">Correct: <span class="function-match-score">0</span>/<span class="function-match-total">4</span></div>
+          <button class="reset-button check-function-match" type="button">Check Answers</button>
+          <button class="reset-button secondary reset-function-match" type="button">Reset Matching</button>
+        </div>
+
+        <div class="function-match-table-wrap">
+          <table class="function-match-table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Function (choose one)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Envelope</th>
+                <td>
+                  <select class="function-select" data-answer="vir-envelope-function">
+                    <option value="">Select function</option>
+                    <option value="vir-envelope-function">Lipid layer that aids host-cell entry by membrane fusion and can help immune evasion</option>
+                    <option value="vir-capsid-function">Protein shell that protects the genome and packages nucleic acid</option>
+                    <option value="vir-genome-function">Genetic material carrying instructions for viral replication</option>
+                    <option value="vir-spike-function">Surface proteins that bind host receptors and determine tropism</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Capsid</th>
+                <td>
+                  <select class="function-select" data-answer="vir-capsid-function">
+                    <option value="">Select function</option>
+                    <option value="vir-envelope-function">Lipid layer that aids host-cell entry by membrane fusion and can help immune evasion</option>
+                    <option value="vir-capsid-function">Protein shell that protects the genome and packages nucleic acid</option>
+                    <option value="vir-genome-function">Genetic material carrying instructions for viral replication</option>
+                    <option value="vir-spike-function">Surface proteins that bind host receptors and determine tropism</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Viral genome</th>
+                <td>
+                  <select class="function-select" data-answer="vir-genome-function">
+                    <option value="">Select function</option>
+                    <option value="vir-envelope-function">Lipid layer that aids host-cell entry by membrane fusion and can help immune evasion</option>
+                    <option value="vir-capsid-function">Protein shell that protects the genome and packages nucleic acid</option>
+                    <option value="vir-genome-function">Genetic material carrying instructions for viral replication</option>
+                    <option value="vir-spike-function">Surface proteins that bind host receptors and determine tropism</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Attachment spikes</th>
+                <td>
+                  <select class="function-select" data-answer="vir-spike-function">
+                    <option value="">Select function</option>
+                    <option value="vir-envelope-function">Lipid layer that aids host-cell entry by membrane fusion and can help immune evasion</option>
+                    <option value="vir-capsid-function">Protein shell that protects the genome and packages nucleic acid</option>
+                    <option value="vir-genome-function">Genetic material carrying instructions for viral replication</option>
+                    <option value="vir-spike-function">Surface proteins that bind host receptors and determine tropism</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="status-message function-match-status" aria-live="polite"></p>
+      </section>
+
+      <section class="function-match" aria-label="Bacteriophage component to function matching activity" data-match="bacteriophage">
+        <header class="function-match-header">
+          <p class="eyebrow">Structure to Function Matching Extension Task</p>
+          <h2>Bacteriophage Components and Functions</h2>
+          <p>Match each phage structure to its role in bacterial infection.</p>
+        </header>
+
+        <div class="function-match-hud" aria-live="polite">
+          <div class="chip">Correct: <span class="function-match-score">0</span>/<span class="function-match-total">4</span></div>
+          <button class="reset-button check-function-match" type="button">Check Answers</button>
+          <button class="reset-button secondary reset-function-match" type="button">Reset Matching</button>
+        </div>
+
+        <div class="function-match-table-wrap">
+          <table class="function-match-table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Function (choose one)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Capsid head</th>
+                <td>
+                  <select class="function-select" data-answer="phg-head-function">
+                    <option value="">Select function</option>
+                    <option value="phg-head-function">Protein shell that encloses and protects phage nucleic acid</option>
+                    <option value="phg-genome-function">Genetic material that directs production of new phage particles</option>
+                    <option value="phg-sheath-function">Contractile tube-like structure that drives genome injection into host</option>
+                    <option value="phg-fibres-function">Attachment structures that recognize and bind bacterial receptors</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Nucleic acid</th>
+                <td>
+                  <select class="function-select" data-answer="phg-genome-function">
+                    <option value="">Select function</option>
+                    <option value="phg-head-function">Protein shell that encloses and protects phage nucleic acid</option>
+                    <option value="phg-genome-function">Genetic material that directs production of new phage particles</option>
+                    <option value="phg-sheath-function">Contractile tube-like structure that drives genome injection into host</option>
+                    <option value="phg-fibres-function">Attachment structures that recognize and bind bacterial receptors</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Tail sheath</th>
+                <td>
+                  <select class="function-select" data-answer="phg-sheath-function">
+                    <option value="">Select function</option>
+                    <option value="phg-head-function">Protein shell that encloses and protects phage nucleic acid</option>
+                    <option value="phg-genome-function">Genetic material that directs production of new phage particles</option>
+                    <option value="phg-sheath-function">Contractile tube-like structure that drives genome injection into host</option>
+                    <option value="phg-fibres-function">Attachment structures that recognize and bind bacterial receptors</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Tail fibres</th>
+                <td>
+                  <select class="function-select" data-answer="phg-fibres-function">
+                    <option value="">Select function</option>
+                    <option value="phg-head-function">Protein shell that encloses and protects phage nucleic acid</option>
+                    <option value="phg-genome-function">Genetic material that directs production of new phage particles</option>
+                    <option value="phg-sheath-function">Contractile tube-like structure that drives genome injection into host</option>
+                    <option value="phg-fibres-function">Attachment structures that recognize and bind bacterial receptors</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="status-message function-match-status" aria-live="polite"></p>
+      </section>
+
+      <section class="function-match" aria-label="Fungal component to function matching activity" data-match="fungus">
+        <header class="function-match-header">
+          <p class="eyebrow">Structure to Function Matching Extension Task</p>
+          <h2>Fungal Components and Functions</h2>
+          <p>Match each fungal structure to its biological function.</p>
+        </header>
+
+        <div class="function-match-hud" aria-live="polite">
+          <div class="chip">Correct: <span class="function-match-score">0</span>/<span class="function-match-total">4</span></div>
+          <button class="reset-button check-function-match" type="button">Check Answers</button>
+          <button class="reset-button secondary reset-function-match" type="button">Reset Matching</button>
+        </div>
+
+        <div class="function-match-table-wrap">
+          <table class="function-match-table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Function (choose one)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Chitin wall</th>
+                <td>
+                  <select class="function-select" data-answer="fun-wall-function">
+                    <option value="">Select function</option>
+                    <option value="fun-wall-function">Provides structural support and protection against osmotic stress</option>
+                    <option value="fun-hypha-function">Filamentous structure for growth, invasion, and nutrient absorption</option>
+                    <option value="fun-nucleus-function">Contains chromosomes and regulates gene expression</option>
+                    <option value="fun-vacuole-function">Storage compartment for solutes and role in osmoregulation</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Hypha</th>
+                <td>
+                  <select class="function-select" data-answer="fun-hypha-function">
+                    <option value="">Select function</option>
+                    <option value="fun-wall-function">Provides structural support and protection against osmotic stress</option>
+                    <option value="fun-hypha-function">Filamentous structure for growth, invasion, and nutrient absorption</option>
+                    <option value="fun-nucleus-function">Contains chromosomes and regulates gene expression</option>
+                    <option value="fun-vacuole-function">Storage compartment for solutes and role in osmoregulation</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Nucleus</th>
+                <td>
+                  <select class="function-select" data-answer="fun-nucleus-function">
+                    <option value="">Select function</option>
+                    <option value="fun-wall-function">Provides structural support and protection against osmotic stress</option>
+                    <option value="fun-hypha-function">Filamentous structure for growth, invasion, and nutrient absorption</option>
+                    <option value="fun-nucleus-function">Contains chromosomes and regulates gene expression</option>
+                    <option value="fun-vacuole-function">Storage compartment for solutes and role in osmoregulation</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Vacuole</th>
+                <td>
+                  <select class="function-select" data-answer="fun-vacuole-function">
+                    <option value="">Select function</option>
+                    <option value="fun-wall-function">Provides structural support and protection against osmotic stress</option>
+                    <option value="fun-hypha-function">Filamentous structure for growth, invasion, and nutrient absorption</option>
+                    <option value="fun-nucleus-function">Contains chromosomes and regulates gene expression</option>
+                    <option value="fun-vacuole-function">Storage compartment for solutes and role in osmoregulation</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="status-message function-match-status" aria-live="polite"></p>
       </section>
     </main>
 
