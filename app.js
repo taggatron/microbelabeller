@@ -275,10 +275,14 @@ functionMatchSections.forEach((section) => {
     let correctCount = 0;
 
     selects.forEach((select) => {
+      const row = select.closest("tr");
       const expected = select.dataset.answer;
       const chosen = select.value;
 
       select.classList.remove("correct", "wrong");
+      if (row) {
+        row.classList.remove("match-correct", "match-wrong");
+      }
 
       if (!chosen) {
         return;
@@ -286,9 +290,15 @@ functionMatchSections.forEach((section) => {
 
       if (chosen === expected) {
         select.classList.add("correct");
+        if (row) {
+          row.classList.add("match-correct");
+        }
         correctCount += 1;
       } else {
         select.classList.add("wrong");
+        if (row) {
+          row.classList.add("match-wrong");
+        }
       }
     });
 
@@ -306,8 +316,12 @@ functionMatchSections.forEach((section) => {
 
   resetButton.addEventListener("click", () => {
     selects.forEach((select) => {
+      const row = select.closest("tr");
       select.value = "";
       select.classList.remove("correct", "wrong");
+      if (row) {
+        row.classList.remove("match-correct", "match-wrong");
+      }
       shuffleSelectOptions(select);
     });
 
@@ -318,7 +332,11 @@ functionMatchSections.forEach((section) => {
 
   selects.forEach((select) => {
     select.addEventListener("change", () => {
+      const row = select.closest("tr");
       select.classList.remove("correct", "wrong");
+      if (row) {
+        row.classList.remove("match-correct", "match-wrong");
+      }
     });
   });
 });
